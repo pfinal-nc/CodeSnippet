@@ -6,7 +6,7 @@
 
 declare(ticks=1);
 $a = 1;
-function test()
+function fib2()
 {
     echo "执行\n";
 }
