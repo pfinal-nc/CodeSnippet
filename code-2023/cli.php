@@ -6,7 +6,7 @@
  */
 
 require_once __DIR__ . '/vendor/autoload.php';
-
+date_default_timezone_set('Asia/Shanghai');
 $climate = new \League\CLImate\CLImate;
 //$climate->red("红色的输出");
 //$climate->out('打印到终端.');
@@ -87,3 +87,5 @@ for ($i = 0; $i <= 100; $i++) {
     // Simulate something happening
     usleep(80000);
 }
+
+$climate->out(date('Y-m-d H:i:s'));
