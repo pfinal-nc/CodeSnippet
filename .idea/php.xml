@@ -10,10 +10,43 @@
     <option name="highlightLevel" value="WARNING" />
     <option name="transferred" value="true" />
   </component>
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/code-2023/vendor/composer" />
+      <path value="$PROJECT_DIR$/code-2023/vendor/league/climate" />
+      <path value="$PROJECT_DIR$/code-2023/vendor/seld/cli-prompt" />
+      <path value="$PROJECT_DIR$/code-2023/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/code-2021/gateway_test/vendor/workerman/workerman" />
+      <path value="$PROJECT_DIR$/code-2021/gateway_test/vendor/workerman/gateway-worker" />
+      <path value="$PROJECT_DIR$/code-2021/gateway_test/vendor/composer" />
+      <path value="$PROJECT_DIR$/code-2020/workman/workman-demo/vendor/workerman/phpsocket.io" />
+      <path value="$PROJECT_DIR$/code-2020/workman/workman-demo/vendor/workerman/channel" />
+      <path value="$PROJECT_DIR$/code-2020/workman/workman-demo/vendor/composer" />
+      <path value="$PROJECT_DIR$/code-2020/workman/workman-demo/vendor/workerman/workerman" />
+      <path value="$PROJECT_DIR$/code-2020/workman/workman-demo/vendor/workerman/gateway-worker" />
+      <path value="$PROJECT_DIR$/code-2020/php-redis/predis/vendor/composer" />
+      <path value="$PROJECT_DIR$/code-2020/php-redis/predis/vendor/predis/predis" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/elastic/transport" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/php-http/httplug" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/php-http/discovery" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/php-http/promise" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/composer" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/code-2023/elasticsearch/vendor/elasticsearch/elasticsearch" />
+    </include_path>
+  </component>
   <component name="PhpInterpreters">
     <interpreters>
-      <interpreter id="97fd3d57-a930-41c3-978d-8dbc7bdb0460" name="pfinal-docker-lnmp-php82:latest" home="docker://DATA" debugger_id="php.debugger.XDebug">
-        <remote_data INTERPRETER_PATH="php" HELPERS_PATH="/opt/.phpstorm_helpers" INITIALIZED="false" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" DOCKER_ACCOUNT_NAME="Docker" DOCKER_IMAGE_NAME="pfinal-docker-lnmp-php82:latest" DOCKER_REMOTE_PROJECT_PATH="/opt/project" />
+      <interpreter id="97fd3d57-a930-41c3-978d-8dbc7bdb0460" name="pfinal-docker-lnmp-php82:latest" home="docker://DATA" auto="false" debugger_id="php.debugger.XDebug">
+        <remote_data INTERPRETER_PATH="php" HELPERS_PATH="/opt/.phpstorm_helpers" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" DOCKER_ACCOUNT_NAME="Docker" DOCKER_IMAGE_NAME="pfinal-docker-lnmp-php82:latest" DOCKER_REMOTE_PROJECT_PATH="/opt/project" />
       </interpreter>
     </interpreters>
   </component>

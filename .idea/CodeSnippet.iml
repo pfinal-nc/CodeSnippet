@@ -2,11 +2,43 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/code-2021/hyperf/hyperf-skeleton" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/code-2021/hyperf/hyperf-skeleton/test" isTestSource="true" packagePrefix="HyperfTest" />
-      <sourceFolder url="file://$MODULE_DIR$/code-2021/swoft" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/code-2021/swoft/test" isTestSource="true" packagePrefix="AppTest" />
+      <sourceFolder url="file://$MODULE_DIR$/code-2021/swoft/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/code-2021/hyperf/hyperf-skeleton/./test" isTestSource="true" packagePrefix="HyperfTest\" />
+      <sourceFolder url="file://$MODULE_DIR$/code-2021/hyperf/hyperf-skeleton/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/code-2021/swoft/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/code-2021/swoft/database" isTestSource="false" packagePrefix="Database\" />
+      <sourceFolder url="file://$MODULE_DIR$/code-2021/swoft/test/testing" isTestSource="true" packagePrefix="AppTest\Testing\" />
+      <sourceFolder url="file://$MODULE_DIR$/code-2021/swoft/test/unit" isTestSource="true" packagePrefix="AppTest\Unit\" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2020/php-redis/predis/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2020/php-redis/predis/vendor/predis/predis" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2020/workman/workman-demo/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2020/workman/workman-demo/vendor/workerman/channel" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2020/workman/workman-demo/vendor/workerman/gateway-worker" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2020/workman/workman-demo/vendor/workerman/phpsocket.io" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2020/workman/workman-demo/vendor/workerman/workerman" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2021/gateway_test/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2021/gateway_test/vendor/workerman/gateway-worker" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2021/gateway_test/vendor/workerman/workerman" />
       <excludeFolder url="file://$MODULE_DIR$/code-2023/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/elastic/transport" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/elasticsearch/elasticsearch" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/php-http/discovery" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/php-http/httplug" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/php-http/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/psr/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/elasticsearch/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/vendor/league/climate" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/code-2023/vendor/seld/cli-prompt" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
