@@ -1,5 +1,8 @@
 {
     "require": {
-        "league/climate": "^3.8"
+        "league/climate": "^3.8",
+      "ext-curl": "*",
+      "ext-pcntl": "*",
+      "ext-swoole": "*"
     }
 }
