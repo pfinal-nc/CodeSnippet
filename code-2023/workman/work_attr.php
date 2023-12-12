@@ -51,3 +51,6 @@ Worker::runAll();
  * Worker::runAll();
  */
 
+// $connections 属性中存储了当前进程的所有客户端连接对象, 其中id为connection的id编号
+
+
