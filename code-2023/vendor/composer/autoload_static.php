@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit2ed2815c933479a72bfe1c0c79d8c49f
 {
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'Workerman\\' => 10,
+        ),
         'S' => 
         array (
             'Seld\\CliPrompt\\' => 15,
@@ -22,6 +26,10 @@ class ComposerStaticInit2ed2815c933479a72bfe1c0c79d8c49f
     );
 
     public static $prefixDirsPsr4 = array (
+        'Workerman\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/workerman/workerman',
+        ),
         'Seld\\CliPrompt\\' => 
         array (
             0 => __DIR__ . '/..' . '/seld/cli-prompt/src',

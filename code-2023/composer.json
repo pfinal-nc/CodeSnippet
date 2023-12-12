@@ -4,6 +4,8 @@
       "ext-curl": "*",
       "ext-pcntl": "*",
       "ext-swoole": "*",
-      "ext-posix": "*"
+      "ext-posix": "*",
+        "workerman/workerman": "^4.1",
+      "ext-pthreads": "*"
     }
 }

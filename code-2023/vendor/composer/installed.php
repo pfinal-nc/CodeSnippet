@@ -46,5 +46,14 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'workerman/workerman' => array(
+            'pretty_version' => 'v4.1.13',
+            'version' => '4.1.13.0',
+            'reference' => '807780ff672775fcd08f89e573a2824e939021ce',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../workerman/workerman',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
     ),
 );
