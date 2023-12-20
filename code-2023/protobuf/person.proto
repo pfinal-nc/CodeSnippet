@@ -1,0 +1,7 @@
+syntax="proto3";
+package test;
+message Person{
+  string name=1;//姓名
+  int32 age=2;//年龄
+  bool sex=3;//性别
+}
