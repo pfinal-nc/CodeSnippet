@@ -6,6 +6,7 @@
       "ext-swoole": "*",
       "ext-posix": "*",
         "workerman/workerman": "^4.1",
-      "ext-pthreads": "*"
+      "ext-pthreads": "*",
+      "ext-mysqli": "*"
     }
 }
