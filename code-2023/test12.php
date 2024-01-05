@@ -25,6 +25,5 @@ while ($process = mysqli_fetch_assoc($result)) {
         mysqli_query($connect, "kill " . $process["Id"]);
         echo "Killed sleeping process: " . $process["Id"] . "\n";
     }
-
 }
 mysqli_close($connect);
