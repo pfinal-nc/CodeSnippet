@@ -1,0 +1,12 @@
+{
+    "require": {
+        "google/protobuf": "^4.26",
+        "grpc/grpc": "^1.57"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lotteryservice\\": "Lotteryservice/",
+            "GPBMetadata\\": "GPBMetadata/"
+        }
+    }
+}
