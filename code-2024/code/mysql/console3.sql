@@ -132,13 +132,20 @@ CREATE TABLE `organization`
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci COMMENT ='公司组织架构';
 
-INSERT INTO `organization`(`org_id`, `org_name`, `parent_id`, `org_level`) VALUES (1, '集团总部', NULL, 1);
-INSERT INTO `organization`(`org_id`, `org_name`, `parent_id`, `org_level`) VALUES (2, '华北分公司', 1, 2);
-INSERT INTO `organization`(`org_id`, `org_name`, `parent_id`, `org_level`) VALUES (3, '华南分公司', 1, 2);
-INSERT INTO `organization`(`org_id`, `org_name`, `parent_id`, `org_level`) VALUES (4, '华北-北京公司', 2, 3);
-INSERT INTO `organization`(`org_id`, `org_name`, `parent_id`, `org_level`) VALUES (5, '华北-内蒙公司', 2, 3);
-INSERT INTO `organization`(`org_id`, `org_name`, `parent_id`, `org_level`) VALUES (6, '华南-广州公司', 3, 3);
-INSERT INTO `organization`(`org_id`, `org_name`, `parent_id`, `org_level`) VALUES (7, '华南-深圳公司', 3, 3);
+INSERT INTO `organization`(`org_id`, `org_name`, `parent_id`, `org_level`)
+VALUES (1, '集团总部', NULL, 1);
+INSERT INTO `organization`(`org_id`, `org_name`, `parent_id`, `org_level`)
+VALUES (2, '华北分公司', 1, 2);
+INSERT INTO `organization`(`org_id`, `org_name`, `parent_id`, `org_level`)
+VALUES (3, '华南分公司', 1, 2);
+INSERT INTO `organization`(`org_id`, `org_name`, `parent_id`, `org_level`)
+VALUES (4, '华北-北京公司', 2, 3);
+INSERT INTO `organization`(`org_id`, `org_name`, `parent_id`, `org_level`)
+VALUES (5, '华北-内蒙公司', 2, 3);
+INSERT INTO `organization`(`org_id`, `org_name`, `parent_id`, `org_level`)
+VALUES (6, '华南-广州公司', 3, 3);
+INSERT INTO `organization`(`org_id`, `org_name`, `parent_id`, `org_level`)
+VALUES (7, '华南-深圳公司', 3, 3);
 
 # 使用递归查询分页查看组织架构
 
@@ -167,4 +174,73 @@ SHOW VARIABLES LIKE "%query_cache%";
 # query_cache_wlock_invalidate 如果该表被锁住，是否返回缓存中的数据，默认是关闭的
 
 
-SHOW STATUS
+SHOW STATUS;
+
+SELECT @@tx_isolation;
+--  查询当前事务的隔离级别 REPEATABLE-READ(可重读性) READ-UNCOMMITTED(不可重读) READ-COMMITTED(可重读性) SERIALIZABLE(串行性)
+
+-- 劲量避免隐含的类型转换
+
+SELECT *
+FROM movies
+WHERE id = '1'; -- (错)
+
+SELECT *
+FROM movies
+WHERE id = 1;
+-- (对)
+
+# id 是整数型, 用'1'会默认启动类型转换, 增加查询的开销
+
+# 尽量减少使用 正则表达式, 尽量不使用通配符
+# 使用关键字代替函数
+
+SELECT * FROM movies where UPPER(actors) LIKE '%冰%';   -- 不建议
+SELECT * FROM movies where SUBSTR(actors, 1, 2) = '范'; -- 不建议
+SELECT SUBSTR('hello', 1, 2);
+SELECT * FROM movies WHERE actors LIKE '%冰%';
+
+# 不在在字段上用 转换函数,尽量在常量上用
+# SELECT * FROM movies WHERE to_char(create_date,'yyyy') = '2021'; -- 不建议
+SELECT * FROM movies WHERE YEAR(release_date) = 2021; -- 不建议
+SELECT * FROM movies WHERE release_date=str_to_date('2021-12-21','%Y-%m-%d');
+
+# 不使用联接做查询
+# SELECT * FROM movies WHERE movie_name || actors like "%范冰%" -- 不建议
+
+# 尽量避免前后都用通配符
+SELECT * FROM movies WHERE actors like "%冰%"; -- 不建议
+SELECT * FROM movies WHERE actors like "范%";
+
+# 判断条件顺序
+SELECT * FROM movies WHERE release_date-30>str_to_date('2021-12-21','%Y-%m-%d'); -- 不建议
+SELECT * FROM movies WHERE release_date > str_to_date('2021-12-21','%Y-%m-%d')+30;
+
+# 尽量使用 exists 而非in
+SELECT id FROM movies WHERE id in (SELECT id FROM movies); -- 不建议
+SELECT actors FROM movies WHERE id>10;
+SELECT id FROM movies where EXISTS (SELECT actors FROM movies WHERE id<10);
+
+# 使用 not exists 而非 not in 代码和上面的类似
+
+# 减少查询表的记录数范围
+# 正确使用索引 索引可以提高速度, 一般来说, 选择度越高, 索引的效率越高
+# 唯一索引,对于查询用到的字段, 尽可能使用唯一索引. 还有一些其他类型
+# 索引类型
+# 唯一索引, 对于查询用到的字段,尽可能使用唯一索引
+
+
+# 优化 sql 常用的
+# 1.尽量避免在 where 子句中 使用 != 或 <> 操作符 否则将引擎放弃使用索引而进行全表扫描
+# 2.对查询进行优化, 应尽量避免全表扫描, 首先应考虑在 where 及 order by 涉及的列表建立索引
+# 3.应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描。如：where id is null
+
+
+
+
+
+
+
+
+
+
