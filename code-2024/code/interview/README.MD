@@ -92,3 +92,60 @@
    > swoole 的事件管理工作原理是基于事件循环模型实现的, 它通过异步非阻塞 I/O、事件注册与回调、事件分发与调度、定时器管理等机制实现了高效的并发处理能力，并且与协程配合使用，可以编写简洁清晰的异步代码。
    
 
+7. Sql 语句性能优化常用策略
+   
+   > 1. 为 WHERE 及 ORDER BY 涉及的列上建立索引
+      > 对查询进行优化,应尽量避免全表扫描, 首先应考虑在 where 及 order by 涉及的列上建立索引
+   > 2. where 中使用默认值代替 null 应尽量 避免在where 子句中对字段进行 null 值判断, 创建表时 null是默认值, 但大多数时候应该使用 not null 或者使用一个特殊的值, 如 0,-1 作为默认值
+      > 为啥建议 where 中使用 默认值代替 null 四个原因:
+      > a. 并不是说使用了is null 或者 is not null 就会不走索引了, 这个跟mysql版本以及查询成本都有关;  
+      > b. 如果mysql优化器发现, 走索引比不走索引成本还要高, 就会放弃索引, 这些条件 !=, <>, is null, is not null 经常被认为让索引失效
+      > c. 其实是因为一般情况下, 查询的成本高, 优化器自动放弃索引的;
+      > d. 如果把 null 值,换成默认值 很多时候让走索引成为可能,同时, 表达意思也相对清晰一点
+   > 3. 慎用 != 或 <> 操作符
+      > mysql 只有对一下操作符才使用索引: <, <=, =, >, >=, BETWEEN, IN, 以及某些时候的 LIKE.
+      > 所以: 应尽量避免在 WHERE 子句中使用 != 或 <> 操作符, 会导致全表扫描
+   
+   > 4. 慎用 OR 来连接条件
+      > 使用 or 可能会使用索引失效, 从而全表扫描;
+      > 应用尽量避免在 where 子句中使用 or 来连接条件, 否则将导致引擎放弃使用 索引而进行全表扫描
+      > 可以使用 UNION 合并查询: select id from t where num=10 union all select id from where num=20
+      > 一个关键的问题是否用到索引。他们的速度只同是否使用索引有关, 如果查询需要用到联合索引, 用 union all 执行的效率更高. 多个 OR 的字句没有用到索引,改写成 union的形式再试图与索引匹配
+
+   > 5. 慎用IN 和 NOT IN
+      
+     > IN和NOT IN 要慎用, 否则会导致全表扫描. 对于连续的数值. 能用 BETWEEN 就不要用 IN: select id from t where num between 1 and 3;
+   
+   > 6. 慎用 左模糊 like '%...'
+   
+     > 模糊查询, like很可能让索引失效。 
+     > 比如: select id from t where name like‘%abc%’ select id from t where name like‘%abc’ 而select id from t where name like‘abc%’才用到索引
+     > 所以: 首先尽量避免模糊查询, 如果必须使用, 不采用全模糊查询, 也应尽量采用右模糊查询, 即like ‘…%’，是会使用索引的； 左模糊like ‘%…’无法直接使用索引，但可以利用reverse + function index的形式，变化成 like ‘…%’； 全模糊查询是无法优化的，一定要使用的话建议使用搜索引擎，比如 ElasticSearch。 备注：如果一定要用左模糊like ‘%…’检索， 一般建议 ElasticSearch+Hbase架构
+
+   > 7. WHERE 条件使用参数会导致全表扫描. 比如: select id from t where num=@num
+      
+      > 因为SQL只有在运行时才会解析局部变量,但优化程序不能将访问计划的选择推迟到 运行时候
+      > 它必须在编译时进行选择,然而,如果在编译时建立访问计划, 变量的值还是未知的, 因而无法作为所以选择的输入项.
+      > 所以,可以改为强制查询使用索引: select id from t with(index(索引名)) where num=@num
+    
+   > 8. 用exists 代替 IN 是一个好的选择:
+      
+      > 很多时候用 exists 代替 in 是一个好的选择 select num from a where num in(select num from b) 用下面的语句替换： select num from a where exists(select 1 from b where num=a.num)
+
+   > 9. 索引并不是越多越好
+      
+     >  索引固然可以提高相应的 SELECT 效率, 但同时也降低了 INSERT 及 UPDATE 的效率
+     >  因为 INSERT 或 UPDATE 时可能会重建索引, 所以怎样建索引需要慎重考虑,视情况而定
+     >  一个表的索引数量最好不要超过 6 个, 若太多则应考虑一些不常用到的列上建的索引是否有必要
+
+   > 10. 尽量使用数字型字段
+      
+     > 因为引擎在处理查询和连接时会逐个比较字符串中每一个字符;
+     > 而对于数字型而言只需要比较一次就够了;
+     > 字符会降低查询和连接的性能, 并会增加存储开销
+     > 所以, 尽量 使用数字型字段, 若只含数值信息的字段尽量不要涉及未字符型 这会降低查询和连接的性能,并会增加存储开销
+   
+   > 11. 尽可能得使用  
+
+
+
